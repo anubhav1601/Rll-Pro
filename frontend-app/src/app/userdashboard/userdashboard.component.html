@@ -1,0 +1,228 @@
+<nav class="navbar navbar-expand-lg " style="background-color:darkcyan ;">
+  <div class="container-fluid">
+    <div >
+      <div  style="margin-left: 70px">
+        <div class="navbar-brand" style="font-size:50px ;">Welcome {{ user }}</div>
+      </div>
+      <div  style="margin-left: 1050px">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <form class="d-flex" role="search">
+            <div  style="margin-right: 30px ;">
+              
+            <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search></div>
+            
+             <input class="btn btn-danger" style="height:80px;width:80px" type="text" value="logout" (click)="logout()" />
+            <button class="btn btn-secondary" routerLink="/changePassword" style="height:80px;width:80px;">Change Password</button>
+            <button routerLink="/cart" class="btn btn-primary">
+              <i style="font-size: 30px " class="fas fa-cart-plus"></i>
+              <div style="font-size: 10px" class="badge bg-danger">{{ totalItem }}</div>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav><div>
+ 
+  
+
+  <div style="background-color:salmon ;" class="card-top container-fluid">
+    <div class="container d-flex">
+      <div class="item button btn">
+        <a (click)="filter('')">
+          <h6>All products</h6>
+        </a>
+      </div>
+      
+      <div class="item button btn">
+        <a (click)="filter('Tablet')">
+          <h6>Tablet</h6>
+        </a>
+      </div>
+      <div class="item button btn">
+        <a (click)="filter('Capsules')">
+          <h6>Capsules</h6>
+        </a>
+      </div>
+      <div class="item button btn">
+        <a (click)="filter('Inhalers')">
+          <h6>Inhalers</h6>
+        </a>
+      </div>
+      <div class="item button btn">
+        <a (click)="filter('Injections')">
+          <h6>Injections</h6>
+        </a>
+      </div>
+      <div class="item button btn">
+        <a (click)="filter('Liquid')">
+          <h6>Liquid</h6>
+        </a>
+      </div>
+      <div class="item button btn">
+        <a (click)="filter('Drops')">
+          <h6>Drops</h6>
+        </a>
+      </div>
+    </div>
+  </div>
+  <br/>
+</div>
+
+  <div class="row" style="width: 25%;display:inline-block;margin-top: 10px;" *ngFor="let item of filterCategory | filter: searchKey:'type'">
+    <div
+      *ngIf="
+        searchText === '' ||
+        item.pname.toLowerCase().includes(searchText.toLowerCase())
+      ">
+   
+      
+    <!--  <div>
+      <img src="{{ item.url }}" width="300px" height="300px" />
+     <div> {{ item.pname }} {{ item.price }} {{ item.type }} {{ item.description }}<br/>
+      <button class="btn btn-primary" (click)="addtocart(item)">
+        Add to cart
+      </button></div>
+    </div> -->
+    <div class="container2" id="grid">
+      <div class="row">
+         <div class="col-1" id="gc"></div>
+        <div class="col-2" id="gc"> 
+          <!-- card -->
+          <div class="card" style="width: 15rem; height:25reml; ">
+            <img class="card-img-top" src="{{ item.url }}" width="200px" height="200px" alt="mes-image">
+            <div class="card-body">
+              <h6 class="card-title">{{ item.pname }}</h6>
+              <p class="card-text">{{ item.description }}</p>
+              <h6 class="price">Rs. {{ item.price }}</h6>
+              
+                <button class="btn btn-primary" (click)="addtocart(item)">
+                  Add to cart
+                </button></div>
+              
+          </div>
+          <!-- card -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+  
+
+<router-outlet></router-outlet>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <nav class="navbar navbar-expand-lg " style="background-color:darkcyan ;">
+  <div class="container-fluid">
+    <div >
+      <div  style="margin-left: 70px">
+        <div class="navbar-brand" style="font-size:50px ;">Welcome {{ user }}</div>
+      </div>
+      <div  style="margin-left: 1050px">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <form class="d-flex" role="search">
+            <div  style="margin-right: 10px ;">
+            <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search></div>
+            <input class="btn btn-danger" type="button" value="logout" (click)="logout()" />
+            <button class="btn btn-secondary" routerLink="/changePassword">Change Password</button>
+            <button routerLink="/cart" class="btn btn-primary">
+              <i style="font-size: 30px" class="fas fa-cart-plus"></i>
+              <div style="font-size: 10px" class="badge bg-danger">{{ totalItem }}</div>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav><div>
+  
+  
+  
+  
+
+  <div style="background-color:darksalmon" class="card-top container-fluid">
+    <div class="container d-flex">
+      <div class="item button btn">
+        <a (click)="filter('')">
+          <h6>All products</h6>
+        </a>
+      </div>
+      <div class="item button btn">
+        <a (click)="filter('Tablet')">
+          <h6>Tablet</h6>
+        </a>
+      </div>
+      <div class="item button btn">
+        <a (click)="filter('Capsules')">
+          <h6>Capsules</h6>
+        </a>
+      </div>
+      <div class="item button btn">
+        <a (click)="filter('Inhalers')">
+          <h6>Inhalers</h6>
+        </a>
+      </div>
+      <div class="item button btn">
+        <a (click)="filter('Injections')">
+          <h6>Injections</h6>
+        </a>
+      </div>
+      <div  class="item button btn">
+        <a (click )="filter('Liquid')">
+          <h6>Liquid</h6>
+        </a>
+      </div>
+      <div class="item button btn">
+        <a (click)="filter('Drops')">
+          <h6>Drops</h6>
+        </a>
+      </div>
+    </div>
+  </div>
+  <br/>
+
+  <span *ngFor="let item of filterCategory | filter: searchKey:'type'">
+    <span
+      *ngIf="
+        searchText === '' ||
+        item.pname.toLowerCase().includes(searchText.toLowerCase())
+      "
+    >
+   
+      <img src="{{ item.url }}" width="300px" height="300px" />
+      
+    
+      {{ item.pname }} {{ item.price }} {{ item.type }} {{ item.description }}
+      <button class="btn btn-primary" (click)="addtocart(item)">
+        Add to cart
+      </button>
+      
+
+    </span>
+  </span>
+
+  
+  
+</div>
+
+
+
+<router-outlet></router-outlet> -->

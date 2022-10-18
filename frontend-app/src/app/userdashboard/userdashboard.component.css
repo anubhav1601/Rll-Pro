@@ -1,0 +1,8 @@
+.row{
+    width: 20%;
+}
+.section {
+    display: flex;
+    flex-direction: row;
+    
+  }
